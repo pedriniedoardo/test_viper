@@ -1,3 +1,7 @@
+# libraries ---------------------------------------------------------------
+library(tidyverse)
+library(viper)
+library(bcellViper)
 
 # load the data and wrangling ---------------------------------------------
 # these are the data already normalized (ExpressionSet object)
@@ -20,6 +24,8 @@ df2 <- inner_join(df,lut,by=c("NAME"="ProbeName"))%>%
   # group_by(EntrezID)%>%
   summarise_at(colnames(.)[-1], mean, na.rm = TRUE) %>%
   rename(rowname = GeneSymbol)
+  # rename(rowname = EntrezID)
+
 
 head(df2,n = 20)
 dim(df2)
